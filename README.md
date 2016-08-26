@@ -119,20 +119,6 @@ scServer.on('connection', function (socket) {
 })
 ```
 
-## How to use examples
-
-### 1) Copy contents of folder to your machine
-### 2) install modules
-``` bash
-npm i
-```
-### 3) Run application
-``` bash
-node server.js
-```
-### 4) Navigate to localhost:3000 in your browser
-
-
 ## Vue-Socketcluster - Config
 ``` js
 Vue.use(VueSocketcluster,{
@@ -180,3 +166,16 @@ Vue.component('my-component',Vue.extend({
 }
 }))
 ```
+
+## How to use examples
+
+### 1) Copy contents of folder to your machine
+### 2) install modules
+``` bash
+npm i
+```
+### 3) Run application
+``` bash
+node server.js
+```
+### 4) Navigate to localhost:3000 in your browser
