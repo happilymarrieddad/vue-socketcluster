@@ -20,12 +20,4 @@ var start = function () {
   var socketCluster = new SocketCluster(options)
 }
 
-var buildJade = function() {
-    require('templatizer')(
-        __dirname+'/templates',
-        __dirname+'/public/js/bin/templates.js'
-    )
-    start()
-}
-
-buildJade()
+start()

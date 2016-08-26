@@ -1,6 +1,6 @@
 var SessionController = {}
 	async = require('async'),
-	Session = require('../models/Session.js')
+	Session = require('../models/Session')
 
 SessionController.route = 'session'
 

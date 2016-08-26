@@ -1,6 +1,7 @@
 
 var controllers = {
-	SessionController:require('../controllers/SessionController.js')
+	SessionController:require('../controllers/SessionController.js'),
+	UsersController:require('../controllers/UsersController.js')
 }
 
 

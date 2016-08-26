@@ -14,10 +14,16 @@
 
     var templatizer = {};
     templatizer["session"] = {};
+    templatizer["users"] = {};
 
     // session/create.jade compiled template
     templatizer["session"]["create"] = function tmpl_session_create() {
-        return '<div style="margin-top:100px" class="row"><div class="col-md-4 col-md-offset-4"><div class="panel panel-primary"><div class="panel-heading"><h5>Create you login screen here</h5></div><div class="panel-body"><div class="form-group"><label>Email</label><input type="email" name="email" class="form-control"/></div><div class="form-group"><label>Password</label><input type="password" name="password" class="form-control"/></div><hr/><div class="form-group"><button type="button" class="btn btn-success">Login</button></div></div></div></div></div>';
+        return '<div style="margin-top:100px" class="row"><div class="col-md-4 col-md-offset-4"><div class="panel panel-primary"><div class="panel-heading"><h5>Please Login</h5></div><div class="panel-body"><div class="form-group"><label>Email</label><input type="email" name="email" class="form-control"/></div><div class="form-group"><label>Password</label><input type="password" name="password" class="form-control"/></div><hr/><div class="form-group"><button type="button" class="btn btn-success">Login</button><a v-link="{ path:&quot;/users/create&quot; }" class="btn btn-default pull-right">Create Account</a></div></div></div></div></div>';
+    };
+
+    // users/create.jade compiled template
+    templatizer["users"]["create"] = function tmpl_users_create() {
+        return '<div style="margin-top:100px" class="row"><div class="col-md-4 col-md-offset-4"><div class="panel panel-primary"><div class="panel-heading"><h5>Create Account</h5></div><div class="panel-body"><div class="form-group"><label>First</label><input type="text" placeholder="First Name" v-model="first" class="form-control"/></div><div class="form-group"><label>Last</label><input type="text" placeholder="Last Name" v-model="last" class="form-control"/></div><div class="form-group"><label>Email</label><input type="email" placeholder="Email" v-model="email" class="form-control"/></div><div class="form-group"><label>Password</label><input type="password" v-model="password" class="form-control"/></div><hr/><div class="form-group"><button type="button" @click.prevent="create" class="btn btn-success">Create Account</button><a v-link="{ path:&quot;/session/create&quot; }" class="btn btn-default pull-right">Go To Login Page</a></div></div></div></div></div>';
     };
 
     return templatizer;

@@ -4,11 +4,8 @@ Vue.use(VueRouter)
 Vue.use(VueSocketcluster)
 
 router.map({
-    '/session/create': { 
-    	component:Vue.extend({
-		    template: templatizer.session.create({})
-		}),auth:false
-   	}
+    '/session/create': { component : sessionComponent, auth:false },
+    '/users/create': { component : usersComponent, auth:false }
 })
 
 router.redirect({
@@ -31,35 +28,39 @@ router.beforeEach(function(transition) {
 router.afterEach(function(transition) {
 	setTimeout(function() {
 		router.app.loading = false
-	},20)
+	},50)
 })
 
 router.start(Vue.extend({
 	data() {
 		return {
+			show_success:false,
+			success_msg:'',
+			show_error:false,
+			error_msg:'',
+
 			loading:true,
 			authenticated:false
+		}
+	},
+	methods:{
+		alert(msg,type) {
+			var vm = this
+			try {
+				vm[type+'_msg'] = msg
+				vm['show_'+type] = true
+				setTimeout(function() {
+					vm[type+'_msg'] = null
+				},3000)
+			}catch(err) {}
 		}
 	},
 	sockets:{
 		connect() {
 			console.log('Connected to server!')
-
-			var watcher = this.$sc.subscribe('broadcast')
-			watcher.watch(function(data) {
-				console.log(data)
-			})
-
-			this.$sc.emit('session',{method:'index',id:5},function(err,response) {
-				console.log(err)
-				console.log(response)
-			})
-		},
-		ping() {
-			this.$sc.emit('pong')
-			this.$sc.emit('ping-with-response',{message:'Hello server!'},function(err,response) {
-				console.log(response)
-			})
 		}
+	},
+	components:{
+		alert:VueStrap.alert
 	}
 }), '#app')

@@ -1,8 +1,8 @@
 'use strict'
 
-class Session extends require('./DB.js') {
+class Session {
 	constructor() {
-		super('session')
+		
 	}
 }
 
