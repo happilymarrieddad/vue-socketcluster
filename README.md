@@ -19,29 +19,16 @@ var vue = new Vue({
 	el:'#app',
 	data() {
 		return {
-			loading:true,
-			authenticated:false
+		
 		}
 	},
 	sockets:{
 		connect() {
 			console.log('Connected to server!')
 
-			var watcher = this.$sc.subscribe('broadcast')
-			watcher.watch(function(data) {
-				console.log(data)
-			})
-
-			this.$sc.emit('session',{method:'index',id:5},function(err,response) {
-				console.log(err)
-				console.log(response)
-			})
 		},
 		ping() {
 			this.$sc.emit('pong')
-			this.$sc.emit('ping-with-response',{message:'Hello server!'},function(err,response) {
-				console.log(response)
-			})
 		}
 	}
 })
