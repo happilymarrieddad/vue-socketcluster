@@ -40,7 +40,8 @@ var usersComponent = Vue.extend({
 					user:attributes
 				},function(err,new_user) {
 					if (err) { return vm.$root.alert(err,'error') }
-					console.log(new_user)
+					vm.$root.alert('Successfully created account ' + new_user.email + '! Please log in.','success')
+					router.go({ path:'/session/create' })
 				})
 			},function(errors) {
 				var error = null

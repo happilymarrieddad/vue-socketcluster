@@ -6,6 +6,6 @@
 		"host":"localhost",
 		"user":"",
 		"password":"",
-		"database":""
+		"database":"mvc_example"
 	}
 }

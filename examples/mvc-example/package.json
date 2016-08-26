@@ -1,8 +1,12 @@
 {
-  "name": "socketcluster-sample",
-  "description": "A sample SocketCluster app",
-  "version": "1.0.0",
+  "name": "mvc-example",
+  "description": "A sample Vue-Socketcluster app",
+  "version": "1.1.0",
   "contributors": [
+    {
+      "name": "Nick Kotenberg",
+      "email": "nkotenberg@happilymarrieddad@yahoo.com"
+    },
     {
       "name": "Jonathan Gros-Dubois",
       "email": "grosjona@yahoo.com.au"
@@ -15,7 +19,10 @@
     "build-jade": "templatizer -d /templates -o public/js/bin/templates.js",
     "build-js":"gulp",
 
-    "deploy":"./bin/deploy-staging.sh"
+    "deploy":"./bin/deploy-staging.sh",
+
+    "preinstall":"npm install gulp templatizer@1.5.4 -g",
+    "postinstall":"npm run build"
   },
   "dependencies": {
     "async": "^2.0.1",

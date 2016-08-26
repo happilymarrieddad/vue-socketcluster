@@ -1,4 +1,4 @@
-SocketCluster Sample App
+MVC-Example
 ======
 
-This is a sample SocketCluster app.
+This will be filled out once I am done building the system.

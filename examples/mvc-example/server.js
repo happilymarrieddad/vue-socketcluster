@@ -16,8 +16,4 @@ var options = {
   crashWorkerOnError: true
 }
 
-var start = function () {
-  var socketCluster = new SocketCluster(options)
-}
-
-start()
+var socketCluster = new SocketCluster(options)

@@ -1,3 +1,5 @@
+'use strict'
+
 var fs = require('fs'),
     express = require('express'),
     serveStatic = require('serve-static'),

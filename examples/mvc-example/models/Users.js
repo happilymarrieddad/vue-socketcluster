@@ -1,9 +1,18 @@
-'use strict'
+var Lynchpin = require('./Lynchpin')
 
-class Users extends require('./DB') {
-	constructor() {
-		super('users')
-	}
+var Users = function() {
+	var self = this
+
+	self._init()
 }
 
-module.exports = Users
+Users.prototype = Object.create(Lynchpin.prototype)
+
+Users.prototype._init = function() {
+	var self = this
+
+	self._table = 'users'
+	Lynchpin.call(self,require('../config.json').db)
+}
+
+module.exports = new Users()

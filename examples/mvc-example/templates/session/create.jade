@@ -6,11 +6,11 @@ div.row(style='margin-top:100px')
 			div.panel-body
 				div.form-group
 					label Email
-					input.form-control(type='email',name='email')
+					input.form-control(type='email',v-model='email')
 				div.form-group
 					label Password
-					input.form-control(type='password',name='password')
+					input.form-control(type='password',v-model='password')
 				hr
 				div.form-group
-					button.btn.btn-success(type='button') Login
+					button.btn.btn-success(type='button',@click='login') Login
 					a.btn.btn-default.pull-right(v-link='{ path:"/users/create" }') Create Account

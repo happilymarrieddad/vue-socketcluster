@@ -4,6 +4,7 @@ gulp.task('default',['minify'])
 
 gulp.task('minify',function(cb) {
 	return gulp.src([
+			'public/js/src/system/init.js',
 			'public/js/src/components/**/*.js',
 			'public/js/src/system/app.js'
 		])
