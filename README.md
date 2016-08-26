@@ -4,11 +4,16 @@ Socketcluster implementation for VueJS
 ## Usage
 
 ``` html
-<body id='app'>
+<doctype html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body id='app'>
 
-</body>
-
-<script src='vue-socketcluster.js'></script>
+		<script src='vue-socketcluster.js'></script>
+	</body>
+</html>
 ```
 
 ## Basic Vue
