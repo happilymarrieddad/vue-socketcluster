@@ -1,5 +1,5 @@
 (function () {
-    var version = 1.0.0
+    var version = 1.1.0
     window.VueSocketcluster = {}
 
     if (!socketCluster) {
@@ -24,10 +24,6 @@
 
             var socket = socketCluster.connect(config)
 
-            /*
-             * Wildcard support
-             * http://stackoverflow.com/questions/10405070/socket-io-client-respond-to-all-events-with-one-handler
-             */
             var onevent = socket.onevent;
             socket.onevent = function (packet) {
                 var args = packet.data || [];
@@ -37,7 +33,6 @@
             }
 
             var methods = [
-                "connect",
                 "error",
                 "disconnect",
                 "reconnect",
@@ -59,12 +54,6 @@
                                 })
                             }
                         }
-
-                        // socket.on("*", function (emit, data) {
-                        //     if (self.$options.sockets.hasOwnProperty(emit)) {
-                        //         self.$options.sockets[emit].call(self, data)
-                        //     }
-                        // })
 
                         methods.forEach(function (m) {
                             socket.on(m, function (data,respond) {

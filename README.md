@@ -1,10 +1,45 @@
 # Vue-Socketcluster.io
 Socketcluster implementation for VueJS
 
+## Change Log
+``` js
+
+08-26-2016 14:47 MST
+
+MVC-Example ( See MVC-Example README.md for more details )
+- Scripts
+1) Added NPM scripts, minify, and so on
+
+- Server-Side
+1) Added an ORM class (Called Lynchpin) that can be extended with any model
+2) Added lots of extended functions for the ORM
+3) Completed the basic MVC example. It now has login, user creation, and basic SPA.
+
+```
+
 ## Installation
 ``` bash
 npm install gulp templatizer@1.5.4 -g
 ```
+
+## How to use examples
+
+### 1) Copy contents of folder to your machine
+### 2) install modules
+``` bash
+npm i
+```
+### 3) copy config.json.sample and database.json.sample to config.json and database.json respectivily (only in mvc-example)
+### 4) Run application
+#### simple-example
+``` bash
+node server.js
+```
+#### mvc-example
+``` bash
+npm start
+```
+### 5) Navigate to localhost:3000 in your browser
 
 ## Usage
 
@@ -176,22 +211,3 @@ Vue.component('my-component',Vue.extend({
 }
 }))
 ```
-
-## How to use examples
-
-### 1) Copy contents of folder to your machine
-### 2) install modules
-``` bash
-npm i
-```
-### 3) copy config.json.sample and database.json.sample to config.json and database.json respectivily (only in mvc-example)
-### 4) Run application
-#### simple-example
-``` bash
-node server.js
-```
-#### mvc-example
-``` bash
-npm start
-```
-### 5) Navigate to localhost:3000 in your browser
