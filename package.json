@@ -1,0 +1,29 @@
+{
+  "name": "vue-socketcluster",
+  "version": "1.0.0",
+  "description": "socketcluster implemantation for vuejs",
+  "main": "vue-socketcluster.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happilymarrieddad/vue-socketcluster.git"
+  },
+  "keywords": [
+    "vuejs",
+    "socket",
+    "vue",
+    "socketcluster",
+    "socketcluster-client"
+  ],
+  "author": "Nick Kotenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/happilymarrieddad/vue-socketcluster/issues"
+  },
+  "homepage": "https://github.com/happilymarrieddad/vue-socketcluster#README.md",
+  "dependencies": {
+    "socketcluster-client": "5.0.6"
+  }
+}

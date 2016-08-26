@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+	head
+		title SC App
+
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		meta(http-equiv='x-ua-compatible',content='ie=edge')
+		
+		link(rel='stylesheet',href='/css/bootstrap.min.css')
+
+	body#app
+
+		div.container-fluid
+			div.row
+				div.col-md-12
+					router-view
+
+		script(src='/js/lib/vue.min.js')
+		//- Not currently being used but it is cool! (https://yuche.github.io/vue-strap/)
+		script(src='/js/lib/vue-strap.min.js')
+		script(src='/js/lib/vue-router.min.js')
+		script(src='/js/lib/vue-socketcluster-with-socketcluster-client.min.js')
+
+		script(src='/js/bin/templates.js')
+
+		script(src='/js/src/system/app.js')

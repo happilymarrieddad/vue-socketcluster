@@ -1,0 +1,32 @@
+{
+  "name": "socketcluster-sample",
+  "description": "A sample SocketCluster app",
+  "version": "1.0.0",
+  "contributors": [
+    {
+      "name": "Jonathan Gros-Dubois",
+      "email": "grosjona@yahoo.com.au"
+    }
+  ],
+  "dependencies": {
+    "connect": "3.0.1",
+    "express": "4.13.1",
+    "jade": "^1.11.0",
+    "minimist": "1.1.0",
+    "sc-cluster-broker-client": "1.x.x",
+    "serve-static": "1.8.0",
+    "socket.io": "^1.4.8",
+    "socketcluster": "5.x.x",
+    "socketcluster-client": "5.x.x",
+    "templatizer": "^1.5.4",
+    "vue-socket.io": "^1.0.2"
+  },
+  "keywords": [
+    "websocket",
+    "server",
+    "realtime",
+    "cluster",
+    "scalable"
+  ],
+  "readmeFilename": "README.md"
+}
