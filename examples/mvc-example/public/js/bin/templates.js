@@ -16,11 +16,8 @@
     templatizer["session"] = {};
 
     // session/create.jade compiled template
-    templatizer["session"]["create"] = function tmpl_session_create(locals) {
-        var buf = [];
-        var jade_mixins = {};
-        var jade_interp;
-        return buf.join("");
+    templatizer["session"]["create"] = function tmpl_session_create() {
+        return '<div style="margin-top:100px" class="row"><div class="col-md-4 col-md-offset-4"><div class="panel panel-primary"><div class="panel-heading"><h5>Create you login screen here</h5></div><div class="panel-body"><div class="form-group"><label>Email</label><input type="email" name="email" class="form-control"/></div><div class="form-group"><label>Password</label><input type="password" name="password" class="form-control"/></div><hr/><div class="form-group"><button type="button" class="btn btn-success">Login</button></div></div></div></div></div>';
     };
 
     return templatizer;
