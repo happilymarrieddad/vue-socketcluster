@@ -1,6 +1,11 @@
 # Vue-Socketcluster.io
 Socketcluster implementation for VueJS
 
+## Installation
+``` bash
+npm install gulp templatizer@1.5.4 -g
+```
+
 ## Usage
 
 ``` html
@@ -179,8 +184,9 @@ Vue.component('my-component',Vue.extend({
 ``` bash
 npm i
 ```
-### 3) Run application
+### 3) copy config.json.sample and database.json.sample to config.json and database.json respectivily (only in mvc-example)
+### 4) Run application
 ``` bash
 node server.js
 ```
-### 4) Navigate to localhost:3000 in your browser
+### 5) Navigate to localhost:3000 in your browser
