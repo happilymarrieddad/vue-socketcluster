@@ -1,0 +1,10 @@
+{
+    "dev": {
+	    "host": "localhost",
+	    "user": "root",
+	    "password" : "wurger12",
+	    "database": "mvc_example",
+	    "driver": "mysql",
+	    "multipleStatements": true
+  	}
+}
