@@ -154,12 +154,14 @@ Vue.use(VueSocketcluster,{
 })
 ```
 ### Example
+``` js
 Vue.use(VueSocketcluster,{
 	hostname: 'securedomain.com',
 	secure: true,
 	port: 443,
 	rejectUnauthorized: false // Only necessary during debug if using a self-signed certificate
 })
+```
 
 ## Vue-Socketcluster - Sockets attribute
 The sockets attributes are essentially channels. If you name an attribute test and then emit to test, the function associated with test will fire.
