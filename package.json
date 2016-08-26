@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/happilymarrieddad/vue-socketcluster#README.md",
   "dependencies": {
-    "bcrypt": "^0.8.7",
     "socketcluster-client": "5.0.6"
   }
 }

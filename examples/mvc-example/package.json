@@ -9,6 +9,7 @@
     }
   ],
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "connect": "3.0.1",
     "express": "4.13.1",
     "jade": "^1.11.0",
