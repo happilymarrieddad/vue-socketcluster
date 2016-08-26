@@ -11,17 +11,29 @@ html(lang='en')
 
 	body#app
 
-		div.container-fluid
+		img(v-show='loading',src='/images/loading.gif',alt='Loading Image',style='position: absolute; margin:auto; left:0; right:0; top:0; bottom:0')
+
+		alert(:show.sync="show_success" placement="top" duration="3000" type="success" width="400px" dismissable)
+			strong {{ success_msg }}
+		alert(:show.sync="show_error" placement="top" duration="3000" type="danger" width="400px" dismissable)
+			strong {{ error_msg }}
+
+		div.container-fluid(v-show='!loading')
 			div.row
 				div.col-md-12
 					router-view
 
+		script(src='/js/lib/validate.min.js')
 		script(src='/js/lib/vue.min.js')
 		//- Not currently being used but it is cool! (https://yuche.github.io/vue-strap/)
 		script(src='/js/lib/vue-strap.min.js')
 		script(src='/js/lib/vue-router.min.js')
 		script(src='/js/lib/vue-socketcluster-with-socketcluster-client.min.js')
-
 		script(src='/js/bin/templates.js')
 
-		script(src='/js/src/system/app.js')
+		script(src='/js/bin/concat-min.js')
+
+		//- script(src='/js/src/components/session/create.js')
+		//- script(src='/js/src/components/users/create.js')
+
+		//- script(src='/js/src/system/app.js')
