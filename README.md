@@ -186,7 +186,12 @@ npm i
 ```
 ### 3) copy config.json.sample and database.json.sample to config.json and database.json respectivily (only in mvc-example)
 ### 4) Run application
+#### simple-example
 ``` bash
 node server.js
+```
+#### mvc-example
+``` bash
+npm start
 ```
 ### 5) Navigate to localhost:3000 in your browser
