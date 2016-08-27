@@ -14,15 +14,14 @@
   ],
   "scripts": {
     "start": "npm run build && node server.js",
+    "start:watch" : "watch 'npm run build' && node server.js",
     "test": "npm run build",
     "build": "npm run build-jade & npm run build-js",
     "build-jade": "templatizer -d /templates -o public/js/bin/templates.js",
-    "build-js":"gulp",
-
-    "deploy":"./bin/deploy-staging.sh",
-
-    "preinstall":"npm install gulp templatizer@1.5.4 -g",
-    "postinstall":"npm run build"
+    "build-js": "gulp",
+    "deploy": "./bin/deploy-staging.sh",
+    "preinstall": "sudo npm install gulp templatizer@1.5.4 watch -g",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "async": "^2.0.1",
@@ -39,6 +38,7 @@
     "jade": "^1.11.0",
     "minimist": "1.1.0",
     "mysql": "^2.11.1",
+    "npm-watch": "^0.1.6",
     "sc-cluster-broker-client": "1.x.x",
     "serve-static": "1.8.0",
     "socket.io": "^1.4.8",
