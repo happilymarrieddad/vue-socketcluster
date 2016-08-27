@@ -25,6 +25,8 @@ var sessionComponent = Vue.extend({
 					password:attributes.password
 				},function(err) {
 					if (err) { console.log(err);return vm.$root.alert(err,'error') }
+					vm.$root.authenticated = true
+					//router.go({ path:'/dashboard' })
 				})
 			},function(errors) {
 				var error = null

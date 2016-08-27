@@ -15,12 +15,10 @@ router.redirect({
 
 router.beforeEach(function(transition) {
 	router.app.loading = true
-	console.log(transition.to.auth)
-	console.log(router.app.authenticated)
-	if (transition.to.auth && !router.app.authenticated) {
+	if (transition.to.auth && router.app.$sc.authState != 'authenticated') {
 		router.app.loading = false
 		transition.redirect('/session/create')
-	} else if (router.app.authenticated && !transition.to.auth) {
+	} else if (router.app.$sc.authState == 'authenticated' && !transition.to.auth) {
 		router.app.loading = false
 		transition.redirect('/dashboard')
 	} else {
@@ -53,11 +51,20 @@ router.start(Vue.extend({
 	},
 	watch:{
 		authenticated:function(val,oldVal) {
-			if (val) { router.go({ path:'/dashboard' }) }
-			else { router.go({ path:'/session/create' }) }
+			if (val) { 
+				this.setUserData()
+				router.go({ path:'/dashboard' })
+			} else { router.go({ path:'/session/create' }) }
 		}
 	},
 	methods:{
+		setUserData() {
+			var vm = this
+			var authToken = vm.$sc.getAuthToken()
+			vm.first = authToken.first
+			vm.last = authToken.last
+			vm.email = authToken.email
+		},
 		alert(msg,type) {
 			var vm = this
 			try {
@@ -67,33 +74,35 @@ router.start(Vue.extend({
 					vm[type+'_msg'] = null
 				},3000)
 			}catch(err) { console.log(err) }
+		},
+		logout() {
+			var vm = this
+			vm.$root.$sc.emit('session',{
+				method:'destroy'
+			},function(err) {
+				if (err) { console.log(err);return vm.$root.alert(err,'error') }
+				vm.$root.authenticated = false
+				//router.go({ path:'/session/create' })
+			})
 		}
 	},
 	sockets:{
 		connect(status) {
 			var vm = this
 			console.log('Connected to server!')
-			if (status.isAuthenticated) {
+			if (vm.$sc.authState == 'authenticated') {
 				vm.authenticated = true
-				var authToken = vm.socket.getAuthToken()
-				vm.first = authToken.user.first
-				vm.last = authToken.user.last
-				vm.email = authToken.user.email
+				vm.setUserData()
 			} else {
 				vm.authenticated = false
 			}
 		},
-		authenticate() {
-			console.log('authenticated')
-			this.authenticated = true
-		},
-		deauthenticate() {
-			console.log('deauthenticate')
-			this.authenticated = false
-		}
+		authenticate() { this.authenticated = true },
+		deauthenticate() { this.authenticated = false }
 	},
 	components:{
-		alert:VueStrap.alert
+		alert:VueStrap.alert,
+		navbar:VueStrap.navbar
 	},
 	ready() {
 		var vm = this

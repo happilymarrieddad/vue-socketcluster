@@ -13,6 +13,19 @@ html(lang='en')
 
 		img(v-show='loading',src='/images/loading.gif',alt='Loading Image',style='position: absolute; margin:auto; left:0; right:0; top:0; bottom:0')
 
+		navbar(v-show='authenticated && !loading && started')
+			li
+				a(v-link='{ path:"/dashboard" }') Dashboard
+			li
+				a(v-link='{ path:"/about" }') About
+			li.dropdown(slot='right')
+				a.dropdown-toggle(data-toggle="dropdown")
+					span {{ first }} {{ last }}
+					span.caret
+				ul.dropdown-menu
+					li
+						a(href='/',@click.prevent='logout') Logout
+
 		alert(:show.sync="show_success && loaded",placement="top",duration="3000",type="success",width="400px",dismissable)
 			strong {{ success_msg }}
 		alert(:show.sync="show_error && loaded",placement="top",duration="3000",type="danger",width="400px",dismissable)

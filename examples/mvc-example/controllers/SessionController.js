@@ -31,4 +31,9 @@ SessionController.store = function(data,respond,socket) {
 	})
 }
 
+SessionController.destroy = function(data,respond,socket) {
+	socket.deauthenticate()
+	return respond(null)
+}
+
 module.exports = SessionController
