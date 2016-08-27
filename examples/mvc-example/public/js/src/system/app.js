@@ -29,12 +29,13 @@ router.beforeEach(function(transition) {
 router.afterEach(function(transition) {
 	setTimeout(function() {
 		router.app.loading = false
-	},50)
+	},router.app.loading_delay)
 })
 
 router.start(Vue.extend({
 	data() {
 		return {
+			loading_delay:20,
 			show_success:false,
 			success_msg:'',
 			show_error:false,
