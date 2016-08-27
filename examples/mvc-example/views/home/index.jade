@@ -31,7 +31,7 @@ html(lang='en')
 		alert(:show.sync="show_error && loaded",placement="top",duration="3000",type="danger",width="400px",dismissable)
 			strong {{ error_msg }}
 
-		div.container-fluid(v-show='!loading && started')
+		div.container-fluid(v-show='!loading && started',style='margin-top:50px')
 			div.row
 				div.col-md-12
 					router-view
