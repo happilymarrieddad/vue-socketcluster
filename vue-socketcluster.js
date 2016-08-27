@@ -1,9 +1,9 @@
-(function () {
-    var version = 1.1.0
-    window.VueSocketcluster = {}
+;(function () {
+    var version = '1.1.0';
+    window.VueSocketcluster = {};
 
     if (!socketCluster) {
-        throw new Error("[Vue-Socketcluster] cannot locate socketcluster-client")
+        throw new Error("[Vue-Socketcluster] cannot locate socketcluster-client");
     }
 
     var VueSocketcluster = {
@@ -11,18 +11,18 @@
 
             if (typeof config == 'object') {
                 if (!config.hostname || !config.port) {
-                    config.hostname = 'localhost',
-                    config.port = 3000
+                    config.hostname = 'localhost';
+                    config.port = 3000;
                 }
                 
             } else {
                 config = {
                     hostname:'localhost',
                     port:3000
-                }
+                };
             }
 
-            var socket = socketCluster.connect(config)
+            var socket = socketCluster.connect(config);
 
             var onevent = socket.onevent;
             socket.onevent = function (packet) {
@@ -33,6 +33,7 @@
             }
 
             var methods = [
+                "connect",
                 "error",
                 "disconnect",
                 "reconnect",
@@ -40,17 +41,17 @@
                 "reconnecting",
                 "reconnect_error",
                 "reconnect_failed"
-            ]
+            ];
 
             Vue.mixin({
                 created: function () {
-                    var self = this
+                    var self = this;
                     if (this.$options.hasOwnProperty("sockets")) {
                         
                         for (var key in self.$options.sockets) {
                             if (self.$options.sockets.hasOwnProperty(key) && methods.indexOf(key) < 0) {
                                 socket.on(key,function(emit,data,respond) {
-                                    self.$options.sockets[key].call(self,data,respond)
+                                    self.$options.sockets[key].call(self,data,respond);
                                 })
                             }
                         }
@@ -58,15 +59,15 @@
                         methods.forEach(function (m) {
                             socket.on(m, function (data,respond) {
                                 if (self.$options.sockets.hasOwnProperty(m)) {
-                                    self.$options.sockets[m].call(self, data, respond)
+                                    self.$options.sockets[m].call(self, data, respond);
                                 }
                             })
                         })
 
                     }
 
-                    // Global socketio instance
-                    this.$sc = socket
+                    // Global VueSocketcluster instance
+                    this.$sc = socket;
                 }
             })
 
@@ -75,10 +76,10 @@
     };
 
     if (typeof exports == "object") {
-        module.exports = VueSocketcluster
+        module.exports = VueSocketcluster;
     } else if (typeof define == "function" && define.amd) {
         define([], function () {
-            return VueSocketcluster
+            return VueSocketcluster;
         })
     } else if (window.Vue) {
         window.VueSocketcluster = VueSocketcluster;
