@@ -33,14 +33,22 @@
             }
 
             var methods = [
-                "connect",
                 "error",
+                "connect",
                 "disconnect",
-                "reconnect",
-                "reconnect_attempt",
-                "reconnecting",
-                "reconnect_error",
-                "reconnect_failed"
+                "connectAbort",
+                "raw",
+                "kickOut",
+                "subscribe",
+                "subscribeFail",
+                "unsubscribe",
+                "authStateChange",
+                "authTokenChange",
+                "subscribeStateChange",
+                "subscribeRequest",
+                "authenticate",
+                "deauthenticate",
+                "message"
             ];
 
             Vue.mixin({
@@ -56,14 +64,13 @@
                             }
                         }
 
-                        methods.forEach(function (m) {
-                            socket.on(m, function (data,respond) {
-                                if (self.$options.sockets.hasOwnProperty(m)) {
-                                    self.$options.sockets[m].call(self, data, respond);
+                        methods.forEach(function (event) {
+                            socket.on(event, function (first,second) {
+                                if (self.$options.sockets.hasOwnProperty(event)) {
+                                    self.$options.sockets[event].call(self, first, second);
                                 }
                             })
                         })
-
                     }
 
                     // Global VueSocketcluster instance
