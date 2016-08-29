@@ -9,7 +9,6 @@ router.map({
 })
 
 router.redirect({
-	'/':'/dashboard',
 	'*':'/dashboard'
 })
 
@@ -52,7 +51,6 @@ router.start(Vue.extend({
 	},
 	watch:{
 		authenticated:function(val,oldVal) {
-			this.setUserData()
 			if (val) { router.go({ path:'/dashboard' }) }
 			else { router.go({ path:'/session/create' }) }
 		}
@@ -88,14 +86,14 @@ router.start(Vue.extend({
 		connect(status) {
 			var vm = this
 
-			console.log('Connected to server!')
-			vm.$sc.on('authStateChange',function(status) {
-				if (status.newState == 'authenticated') {
-					vm.authenticated = true
-				} else {
-					vm.authenticated = false
-				}
-			})
+			vm.authenticated = status.isAuthenticated
+		},
+		authenticate() {
+			this.authenticated = true
+			this.setUserData()
+		},
+		deauthenticate() {
+			this.authenticated = false
 		}
 	},
 	components:{
