@@ -65,9 +65,9 @@
                         }
 
                         methods.forEach(function (event) {
-                            socket.on(event, function (first,second) {
+                            socket.on(event, function (d,r) {
                                 if (self.$options.sockets.hasOwnProperty(event)) {
-                                    self.$options.sockets[event].call(self, first, second);
+                                    self.$options.sockets[event].call(self, d, r);
                                 }
                             })
                         })
