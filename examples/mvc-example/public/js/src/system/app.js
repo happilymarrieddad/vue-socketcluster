@@ -52,16 +52,15 @@ router.start(Vue.extend({
 	},
 	watch:{
 		authenticated:function(val,oldVal) {
-			if (val) { 
-				this.setUserData()
-				router.go({ path:'/dashboard' })
-			} else { router.go({ path:'/session/create' }) }
+			this.setUserData()
+			if (val) { router.go({ path:'/dashboard' }) }
+			else { router.go({ path:'/session/create' }) }
 		}
 	},
 	methods:{
 		setUserData() {
 			var vm = this
-			var authToken = vm.$sc.getAuthToken()
+			var authToken = vm.$sc.getAuthToken() || {}
 			vm.first = authToken.first
 			vm.last = authToken.last
 			vm.email = authToken.email
@@ -82,24 +81,22 @@ router.start(Vue.extend({
 				method:'destroy'
 			},function(err) {
 				if (err) { console.log(err);return vm.$root.alert(err,'error') }
-				vm.$root.authenticated = false
-				//router.go({ path:'/session/create' })
 			})
 		}
 	},
 	sockets:{
 		connect(status) {
 			var vm = this
+
 			console.log('Connected to server!')
-			if (vm.$sc.authState == 'authenticated') {
-				vm.authenticated = true
-				vm.setUserData()
-			} else {
-				vm.authenticated = false
-			}
-		},
-		authenticate() { this.authenticated = true },
-		deauthenticate() { this.authenticated = false }
+			vm.$sc.on('authStateChange',function(status) {
+				if (status.newState == 'authenticated') {
+					vm.authenticated = true
+				} else {
+					vm.authenticated = false
+				}
+			})
+		}
 	},
 	components:{
 		alert:VueStrap.alert,
