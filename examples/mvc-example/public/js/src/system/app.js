@@ -73,7 +73,7 @@ router.start(Vue.extend({
 				setTimeout(function() {
 					vm[type+'_msg'] = null
 				},3000)
-			}catch(err) { console.log(err) }
+			}catch(err) {}
 		},
 		logout() {
 			var vm = this
