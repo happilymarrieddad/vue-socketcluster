@@ -21,7 +21,7 @@ var start = function () {
 }
 
 var buildJade = function() {
-    require('templatizer')(
+    require('puglatizer')(
         __dirname+'/templates',
         __dirname+'/public/js/bin/templates.js'
     )

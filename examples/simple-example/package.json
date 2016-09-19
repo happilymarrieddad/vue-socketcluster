@@ -13,6 +13,8 @@
     "express": "4.13.1",
     "jade": "^1.11.0",
     "minimist": "1.1.0",
+    "pug": "^2.0.0-beta6",
+    "pug-runtime": "^2.0.2",
     "sc-cluster-broker-client": "1.x.x",
     "serve-static": "1.8.0",
     "socket.io": "^1.4.8",

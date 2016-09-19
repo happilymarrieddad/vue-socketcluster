@@ -12,10 +12,15 @@ module.exports.run = function (worker) {
     var scServer = worker.scServer
 
     app.set('views', __dirname+'/views')
-    app.set('view engine', 'jade')
+    app.set('view engine', 'pug')
     app.use(serveStatic(path.resolve(__dirname, 'public')))
+    app.use('/scripts',express.static(__dirname + '/node_modules'))
 
     httpServer.on('request', app)
+
+    app.get('/pug',function(req,res) {
+        res.render('pug')
+    })
 
     app.get('*',function(req,res) {
         res.render('home/index')

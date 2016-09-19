@@ -1,0 +1,37 @@
+doctype html
+html(lang='en')
+	head
+		title SC App
+
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		meta(http-equiv='x-ua-compatible',content='ie=edge')
+		
+		link(rel='stylesheet',href='/css/bootstrap.min.css')
+
+	body#app
+
+		div.container-fluid
+			div.row
+				div.col-md-12
+					h3 Pug tester
+
+		//- script(src='/js/lib/require.min.js')
+		//- script.
+		//- 	requirejs.config({
+		//- 	    //By default load any module IDs from js/lib
+		//- 	    baseUrl: 'js/bin',
+		//- 	    //except, if the module ID starts with "app",
+		//- 	    //load it from the js/app directory. paths
+		//- 	    //config is relative to the baseUrl, and
+		//- 	    //never includes a ".js" extension since
+		//- 	    //the paths config could be for a directory.
+		//- 	    paths: {
+		//- 	        pug: '../../../node_modules/pug'
+		//- 	    }
+		//- 	})
+
+			//var pug = require(['pug'])
+
+
+		script(src='/js/bin/templates.js')

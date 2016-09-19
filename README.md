@@ -2,10 +2,35 @@
 Socketcluster implementation for VueJS
 
 ## Change Log
+
+### 1.1.0
+
+Added a new channel set so you can subscribe to channels as well. The following are some examples
+```js
+sockets:{
+	connect(status) {
+		var vm = this
+
+		vm.authenticated = status.isAuthenticated
+	},
+	authenticate() {
+		this.authenticated = true
+		this.setUserData()
+	},
+	deauthenticate() {
+		this.authenticated = false
+	}
+},
+subscriptions:{
+	'crud>create':function(data) {
+		console.log(data)
+	}
+}
+```
+
+### 1.0.0
+
 ``` js
-
-08-26-2016 14:47 MST
-
 MVC-Example ( See MVC-Example README.md for more details )
 - Scripts
 1) Added NPM scripts, minify, and so on

@@ -65,12 +65,25 @@
                         }
 
                         methods.forEach(function (event) {
-                            socket.on(event, function (d,r) {
+                            socket.on(event, function (data,respond) {
                                 if (self.$options.sockets.hasOwnProperty(event)) {
-                                    self.$options.sockets[event].call(self, d, r);
+                                    self.$options.sockets[event].call(self, data, respond);
                                 }
                             })
                         })
+                    }
+
+                    if (this.$options.hasOwnProperty("subscriptions")) {
+                        
+                        for (var key in self.$options.subscriptions) {
+                            if (self.$options.subscriptions.hasOwnProperty(key) && methods.indexOf(key) < 0) {
+                                var watcher = socket.subscribe(key)
+                                watcher.watch(function(data) {
+                                    self.$options.subscriptions[key].call(self,data)
+                                })
+                            }
+                        }
+
                     }
 
                     // Global VueSocketcluster instance

@@ -16,4 +16,11 @@ var options = {
   crashWorkerOnError: true
 }
 
+if (config.redis_server) {
+  options.brokerOptions = {
+    host:config.redis_server.private_ip || 'localhost',
+    port:config.redis_server.port || 6379
+  }
+}
+
 var socketCluster = new SocketCluster(options)

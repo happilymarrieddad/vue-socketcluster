@@ -1,0 +1,15 @@
+{
+	"name":"Test APP",
+	"port":3000,
+	"db":{
+		"host":"localhost",
+		"user":"root",
+		"password":"wurger12",
+		"database":"sc_crud_mysql"
+	},
+	"redis_server":{
+		"public_ip":"localhost",
+		"private_ip":"localhost",
+		"port":6379
+	}
+}
