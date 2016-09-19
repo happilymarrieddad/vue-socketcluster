@@ -1,6 +1,6 @@
 {
   "name": "vue-socketcluster",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "socketcluster implemantation for vuejs",
   "main": "vue-socketcluster.js",
   "scripts": {
